@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Бізге қосылыңыз — Айнұр &amp; Еркін</title>
+  <style>
+    :root{--accent:#c66;--muted:#666;--bg:#fff}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;background:linear-gradient(180deg,#fff 0%,#f8f8fb 100%);color:#111}
+    .container{max-width:920px;margin:36px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center}
+    .logo{width:84px;height:84px;border-radius:12px;overflow:hidden;flex:0 0 84px;background:linear-gradient(135deg,var(--accent),#f09)}
+    .title h1{margin:0;font-size:22px}
+    .title p{margin:6px 0 0;color:var(--muted)}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px;background:#fff;padding:18px;border-radius:14px;box-shadow:0 6px 20px rgba(20,20,50,0.05)}
+    .lead{font-size:18px}
+
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}}
+
+    .card{background:#fff;padding:16px;border-radius:12px}
+    .card h3{margin:0 0 8px}
+
+    .countdown{display:flex;gap:10px}
+    .countdown > div{flex:1;text-align:center;padding:10px;border-radius:8px;background:#f7f7fb}
+    .countdown .big{font-weight:700;font-size:18px}
+
+    .gallery{display:flex;flex-wrap:wrap;gap:8px}
+    .gallery img{width:calc(50% - 4px);border-radius:8px;object-fit:cover;height:120px}
+
+    form label{display:block;margin-top:8px;font-size:14px}
+    input[type=text],input[type=email],textarea,select{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e6e6ee}
+    button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer;margin-top:12px}
+
+    .map{height:200px;border-radius:10px;overflow:hidden}
+    footer{margin-top:18px;padding:12px;text-align:center;color:var(--muted);font-size:13px}
+
+    .share{display:flex;gap:8px;margin-top:8px}
+    .chip{padding:8px 10px;border-radius:999px;border:1px solid #eee;font-size:13px}
+
+    .guestbook{max-height:220px;overflow:auto;padding-right:8px}
+    .gb-item{padding:8px;border-bottom:1px dashed #eee}
+
+    .music-control{margin-top:12px;text-align:center}
+    .music-control button{background:#444;color:#fff;border:0;padding:10px 14px;border-radius:8px;cursor:pointer;margin-top:6px}
+  </style>
+</head>
+<body>
+  <audio id="bg-music" loop>
+    <source src="background-music-11157.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <header>
+      <div class="logo" aria-hidden></div>
+      <div class="title">
+        <h1>Айнұр &amp; Еркін</h1>
+        <p>Сізді біздің тойымызға шақырамыз — 12 желтоқсан, 2025</p>
+      </div>
+    </header>
+
+    <section class="music-control">
+      <button id="music-btn">🎵 Музыканы қосу</button>
+    </section>
+
+    <section class="hero">
+      <div class="lead">Құрметті туған-туыс пен достар! Біз сізді қуанышымызға бөленуге шақырамыз. Төменнен бағдарлама, RSVP және үйге қалай жету туралы мәлімет таба аласыз.</div>
+
+      <div class="grid">
+        <main>
+          <div class="card">
+            <h3>Күн тәртібі</h3>
+            <p><strong>12 желтоқсан 2025</strong> — той басталуы 18:00, тойхана: «Алатау», Бұқар жырау 43.</p>
+            <div style="margin-top:12px" class="countdown" id="countdown">
+              <div><div class="big" id="days">--</div><div>Күн</div></div>
+              <div><div class="big" id="hours">--</div><div>Сағат</div></div>
+              <div><div class="big" id="minutes">--</div><div>Минут</div></div>
+              <div><div class="big" id="seconds">--</div><div>Сек</div></div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h3>Фотогалерея</h3>
+            <div class="gallery">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="">
+              <img src="https://images.unsplash.com/photo-1505238680356-667803448bb6?q=80&w=800&auto=format&fit=crop" alt="">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="">
+              <img src="https://images.unsplash.com/photo-1501601965345-7b6b13d3d8b2?q=80&w=800&auto=format&fit=crop" alt="">
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h3>Қонақтар кітабы</h3>
+            <div class="guestbook" id="guestbook"></div>
+            <form id="gb-form">
+              <label>Аты-жөніңіз</label>
+              <input type="text" id="gb-name" required>
+              <label>Хабарлама</label>
+              <textarea id="gb-msg" rows="2" required></textarea>
+              <button type="submit">Жіберу</button>
+            </form>
+          </div>
+        </main>
+
+        <aside>
+          <div class="card">
+            <h3>RSVP</h3>
+            <p>Келесіз бе? Төмендегі форма арқылы растаңыз.</p>
+            <form id="rsvp-form">
+              <label>Аты-жөні</label>
+              <input type="text" id="name" required>
+              <label>Электрондық пошта</label>
+              <input type="email" id="email" required>
+              <label>Қатысу саны</label>
+              <select id="count">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+              </select>
+              <label>Тілек немесе ескерту (опциялы)</label>
+              <textarea id="note" rows="2"></textarea>
+              <button type="submit">Растау</button>
+            </form>
+
+            <div style="margin-top:12px">
+              <h3>Орналасу</h3>
+              <div class="map" id="map">
+                <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps?q=Алматы,+Бұқар+жырау+43&output=embed" allowfullscreen></iframe>
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <h3>Бөлісу</h3>
+              <div class="share">
+                <div class="chip" id="share-wh">WhatsApp</div>
+                <div class="chip" id="share-vk">Telegram</div>
+                <div class="chip" id="share-copy">Сілтемені көшіру</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>© 2025 Айнұр &amp; Еркін — Барлық құқықтар қорғалған</footer>
+  </div>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    let playing = false;
+    btn.addEventListener('click',()=>{
+      if(!playing){
+        music.play();
+        btn.textContent = '🔇 Музыканы тоқтату';
+        playing = true;
+      }else{
+        music.pause();
+        btn.textContent = '🎵 Музыканы қосу';
+        playing = false;
+      }
+    });
+
+    (function(){
+      const eventDate = new Date('2025-12-12T18:00:00');
+      function tick(){
+        const now = new Date();
+        let diff = Math.max(0, eventDate - now);
+        const days = Math.floor(diff / (1000*60*60*24));
+        diff -= days*(1000*60*60*24);
+        const hours = Math.floor(diff / (1000*60*60));
+        diff -= hours*(1000*60*60);
+        const minutes = Math.floor(diff / (1000*60));
+        diff -= minutes*(1000*60);
+        const seconds = Math.floor(diff/1000);
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+      }
+      tick();setInterval(tick,1000);
+    })();
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    rsvpForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        count: document.getElementById('count').value,
+        note: document.getElementById('note').value
+      };
+      const list = JSON.parse(localStorage.getItem('rsvps')||'[]');
+      list.push({...data, date: new Date().toISOString()});
+      localStorage.setItem('rsvps', JSON.stringify(list));
+      alert('Растау жіберілді — рахмет!');
+      rsvpForm.reset();
+    });
+
+    const gbForm = document.getElementById('gb-form');
+    const gbList = document.getElementById('guestbook');
+    function renderGB(){
+      const items = JSON.parse(localStorage.getItem('guestbook')||'[]');
+      gbList.innerHTML = items.map(it=>`<div class=\"gb-item\"><strong>${escapeHtml(it.name)}</strong><div style=\"color:var(--muted);font-size:13px\">${new Date(it.date).toLocaleString()}</div><div style=\"margin-top:6px\">${escapeHtml(it.msg)}</div></div>`).join('');
+    }
+    gbForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('gb-name').value;
+      const msg = document.getElementById('gb-msg').value;
+      const arr = JSON.parse(localStorage.getItem('guestbook')||'[]');
+      arr.unshift({name,msg,date:new Date().toISOString()});
+      localStorage.setItem('guestbook', JSON.stringify(arr));
+      gbForm.reset();renderGB();
+    });
+    renderGB();
+
+    function escapeHtml(s){return String(s).replace(/[&<>\"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]});}
+
+    document.getElementById('share-copy').addEventListener('click',()=>{
+      navigator.clipboard.writeText(location.href).then(()=>alert('Сілтеме көшірілді'));
+    });
+    document.getElementById('share-wh').addEventListener('click',()=>{
+      const url = encodeURIComponent(location.href);
+      window.open('https://wa.me/?text='+url,'_blank');
+    });
+    document.getElementById('share-vk').addEventListener('click',()=>{
+      const url = encodeURIComponent(location.href);
+      window.open('https://t.me/share/url?url='+url,'_blank');
+    });
+  </script>
+</body>
+</html>
