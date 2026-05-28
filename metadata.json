@@ -1,0 +1,6 @@
+{
+  "name": "Абзал & Диана — Құдалық Той шақыруы",
+  "description": "Ұлымыз Абзал мен келініміз Диананың құдалық тойына арналған эксклюзивті интерактивті шақыру сайты",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
