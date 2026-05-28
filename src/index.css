@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  
+  --color-gold-light: #f3e5be;
+  --color-gold-medium: #dfba6b;
+  --color-gold-dark: #b58d3d;
+  --color-ivory: #faf6f0;
+  --color-champagne: #f4ebd9;
+  --color-champagne-dark: #e6dac3;
+  --color-beige-warm: #fdfaf6;
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #f3e5be 0%, #dfba6b 40%, #b58d3d 70%, #dfba6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gold-gradient-soft {
+    background: linear-gradient(135deg, #ffffff 0%, #f4ebd9 50%, #dfba6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #f4ebd9 0%, #dfba6b 50%, #b58d3d 100%);
+  }
+
+  .bg-gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(223, 186, 107, 0.1) 0%,
+      rgba(243, 229, 190, 0.4) 50%,
+      rgba(223, 186, 107, 0.1) 100__
+    );
+    background-size: 200% 100%;
+    animation: goldShimmer 4s infinite linear;
+  }
+
+  .border-gold {
+    border-color: rgba(223, 186, 107, 0.3);
+  }
+
+  .border-gold-focus {
+    border-color: rgba(223, 186, 107, 0.8);
+  }
+
+  .shadow-gold-glow {
+    box-shadow: 0 0 15px rgba(223, 186, 107, 0.25);
+  }
+
+  .shadow-gold-glow-lg {
+    box-shadow: 0 0 30px rgba(223, 186, 107, 0.4);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(223, 186, 107, 0.25);
+  }
+
+  .glass-panel-dark {
+    background: rgba(18, 16, 13, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(223, 186, 107, 0.15);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(223, 186, 107, 0.2);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(223, 186, 107, 0.4);
+    box-shadow: 0 20px 40px rgba(181, 141, 61, 0.12);
+    transform: translateY(-4px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf6f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dfba6b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b58d3d;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-color: #faf6f0;
+}
+
+/* Animations */
+@keyframes goldShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Elegant ornamental divider */
+.gold-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #dfba6b;
+}
+
+.gold-ornament::before,
+.gold-ornament::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, #dfba6b);
+}
+
+.gold-ornament::after {
+  background: linear-gradient(270deg, transparent, #dfba6b);
+}
